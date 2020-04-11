@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f03562adec132128aa37c5e0fee9109e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+    
+
+    
+    <title>Markdown概述 | Ray&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="定义：&amp;emsp;&amp;emsp;Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。它的语法简单明了、学习容易，而且功能比纯文本更强，因此很多人用它来写博客。世界上最流行的博客平台WordPress和大型CMS如Joomla、Drupal都能很好的支持Markdown。完全采用Markdown编辑器的博客平台有Ghost和Typecho">
+<meta name="keywords" content="第一篇，练习，熟悉markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown概述">
+<meta property="og:url" content="http://ray-dai.github.io/2019/07/15/文章1/index.html">
+<meta property="og:site_name" content="Ray&#39;s Blog">
+<meta property="og:description" content="定义：&amp;emsp;&amp;emsp;Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。它的语法简单明了、学习容易，而且功能比纯文本更强，因此很多人用它来写博客。世界上最流行的博客平台WordPress和大型CMS如Joomla、Drupal都能很好的支持Markdown。完全采用Markdown编辑器的博客平台有Ghost和Typecho">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://ray-dai.github.io/images/kind.jpeg">
+<meta property="og:image" content="http://ray-dai.github.io/images/kind.jpeg">
+<meta property="og:updated_time" content="2019-07-22T03:51:43.873Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown概述">
+<meta name="twitter:description" content="定义：&amp;emsp;&amp;emsp;Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。它的语法简单明了、学习容易，而且功能比纯文本更强，因此很多人用它来写博客。世界上最流行的博客平台WordPress和大型CMS如Joomla、Drupal都能很好的支持Markdown。完全采用Markdown编辑器的博客平台有Ghost和Typecho">
+<meta name="twitter:image" content="http://ray-dai.github.io/images/kind.jpeg">
+    
+    <link rel="alternate" href="/atom.xml" title="Ray&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/css/images/favicon5.png">
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/assets/css/APlayer.min.css" class="aplayer-style-marker">
+<script src="/assets/js/APlayer.min.js" class="aplayer-script-marker"></script>
+</head>
+<!-- chat -->
+
+<script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+        i["DaoVoiceObject"] = r;
+        i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) },
+            i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        a.charset = "utf-8";
+        m.parentNode.insertBefore(a, m)
+    })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+    daovoice('init', {
+        app_id: "fc9adb19"
+    });
+    daovoice('update');
+</script>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ray&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一位默默奋斗着的程序猿</a>
+        </h2>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=180 height=40 src="//music.163.com/outchain/player?type=2&id=539420&auto=1&height=32"></iframe>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/projects">项目</a>
+        
+          <a class="main-nav-link" href="/stacks">技术</a>
+        
+          <a class="main-nav-link" href="/resume">关于我</a>
+        
+          <a class="main-nav-link" href="/contact">联系我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        
+        <form class="search-form">
+            <input type="text" id="local-search-input" class="search-form-input"  placeholder="Search">
+            <button type="reset" class="search-form-submit">&#xf010;</button>
+            <input type="hidden">
+        </form>
+        <div id="local-search-result" class="local-search-result-cls"></div>
+        
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-文章1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/15/文章1/" class="article-date">
+  <time datetime="2019-07-15T01:52:00.000Z" itemprop="datePublished">2019-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/commons/">commons</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Markdown概述
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- <h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>&emsp;&emsp;Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。它的语法简单明了、学习容易，而且功能比纯文本更强，因此很多人用它来写博客。<br>世界上最流行的博客平台WordPress和大型CMS如Joomla、Drupal都能很好的支持Markdown。完全采用Markdown编辑器的博客平台有Ghost和Typecho。<br>&emsp;&emsp;用于编写说明文档，并且以“README.md”的文件名保存在软件的目录下面。<br>&emsp;&emsp;除此之外，由于我们有了RStudio这样的神级编辑器，我们还可以快速将Markdown转化为演讲PPT、Word产品文档、LaTex论文甚至是用非常少量的代码完成最小可用原型。在数据科学领域，Markdown已经广泛使用，极大地推进了动态可重复性研究的历史进程。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><h4 id="1-文本样式"><a href="#1-文本样式" class="headerlink" title="1. 文本样式"></a>1. 文本样式</h4><p>斜体：*xxx* 或 _xxx_  =&gt; <em>xxx</em><br>粗体：**xxx**  =&gt;  =&gt; <strong>xx</strong><br>加粗斜体：***xxx***  =&gt;  <strong><em>xxx</em></strong><br>删除线：~~xxx~~  =&gt;  <del>xxx</del><br>加粗斜体删除线：***~~xxx~~***  =&gt;  <strong><em><del>xxx</del></em></strong>  </p>
+<h4 id="2-分级标题"><a href="#2-分级标题" class="headerlink" title="2.分级标题"></a>2.分级标题</h4><p># 一级标题  =&gt; </p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>## 二级标题 =&gt; </p>
+<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>### 三级标题 =&gt;  </p>
+<h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>#### 四级标题 =&gt;   </p>
+<h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><p>##### 五级标题  =&gt;  </p>
+<h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><p>###### 六级标题   =&gt; </p>
+<h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h4 id="3-超链接"><a href="#3-超链接" class="headerlink" title="3. 超链接"></a>3. 超链接</h4><p>行内形式：[content](url “title”)<br>例：<br>[我的博客](<a href="https://ray-dai.github.io/">https://ray-dai.github.io/</a> “点击打开我的博客”)<br>=&gt;<br><a href="https://ray-dai.github.io/" title="点击打开我的博客">我的博客</a>  </p>
+<p>参数形式：[content][name]<br>&emsp;&emsp;&emsp;&emsp;&emsp;[name]: url “title”<br>例：<br>[我的博客][1]<br>有一个很好的平台-[简书][2]<br>[1]:<a href="https://rai-dai.github.io/" target="_blank" rel="noopener">https://rai-dai.github.io/</a><br>[2]:<a href="http://www.jianshu.com/" target="_blank" rel="noopener">http://www.jianshu.com/</a><br>=&gt;<br>[我的博客][1]<br>有一个很好的平台-[简书][2]<br>[1]:<a href="https://rai-dai.github.io/" target="_blank" rel="noopener">https://rai-dai.github.io/</a><br>[2]:<a href="http://www.jianshu.com/" target="_blank" rel="noopener">http://www.jianshu.com/</a> </p>
+<p>自动链接：  &lt; url &gt;<br>例子：<br>我的博客地址 <a href="https://ray-dai.github.io/">https://ray-dai.github.io/</a>  </p>
+<h4 id="4-列表"><a href="#4-列表" class="headerlink" title="4. 列表"></a>4. 列表</h4><p>无序列表：<br>* xxx  =&gt;  •  xxx<br>+ xxx  =&gt;  •  xxx<br>- xxx  =&gt;  •  xxx  </p>
+<p>有序列表：<br>1.xxx  =&gt;  1.xxx<br>2.xxx  =&gt;  2.xxx<br>3.xxx  =&gt;  3.xxx  </p>
+<h4 id="5-插入图片、视频、音乐"><a href="#5-插入图片、视频、音乐" class="headerlink" title="5. 插入图片、视频、音乐"></a>5. 插入图片、视频、音乐</h4><p>插入图片<br>在 Hexo 中插入图片，首先需要将图片放在 source/images/ 文件夹下，然后如下方式进行插入:  <center>![title](src)</center><br>例：<br><img src="/images/kind.jpeg" alt="你是什么垃圾"><br>如果要设置图片尺寸或居左/中/右，可以如下设置：<br>&lt; img src=”/images/kind.jpeg” width = “100” height = “100” div align=center /&gt;<br>效果如下：<br><img src="/images/kind.jpeg" width="100" height="100" div="" align="center">  </p>
+<p>插入视频<br>&lt; video src=”/media/demo.mp4” width=”320” height=”180” controls=”controls”&gt;&lt; /video&gt;<br>效果如下：</p>
+<video src="/media/demo.mp4" width="320" height="180" controls="controls"></video>
+
+<p>插入音频<br>&lt; audio src=”/media/穿越时空的思念.mp3” controls autoplay&gt;<br>&emsp;&emsp;您的浏览器暂时不支持音频<br>&lt; /audio&gt;<br>效果如下：  </p>
+<audio src="/media/穿越时空的思念.mp3" controls autoplay><br> 您的浏览器暂时不支持音频<br></audio>  
+
+
+        <div id="aplayer-AlwhSUdm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-AlwhSUdm"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "穿越时空的思念",
+              author: "和田薰",
+              url: "/media/穿越时空的思念.mp3",
+              pic: "/images/kind.jpeg",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+<h4 id="6-表格"><a href="#6-表格" class="headerlink" title="6. 表格"></a>6. 表格</h4><p>表头1|表头2|表头3|表头4<br>-| :- | :-: | -:<br>默认左对齐|左对齐|居中对其|右对齐|<br>默认左对齐|左对齐|居中对其|右对齐|<br>默认左对齐|左对齐|居中对其|右对齐|</p>
+<p>=&gt;</p>
+<table>
+<thead>
+<tr>
+<th>表头1</th>
+<th style="text-align:left">表头2</th>
+<th style="text-align:center">表头3</th>
+<th style="text-align:right">表头4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认左对齐</td>
+<td style="text-align:left">左对齐</td>
+<td style="text-align:center">居中对其</td>
+<td style="text-align:right">右对齐</td>
+<td></td>
+</tr>
+<tr>
+<td>默认左对齐</td>
+<td style="text-align:left">左对齐</td>
+<td style="text-align:center">居中对其</td>
+<td style="text-align:right">右对齐</td>
+<td></td>
+</tr>
+<tr>
+<td>默认左对齐</td>
+<td style="text-align:left">左对齐</td>
+<td style="text-align:center">居中对其</td>
+<td style="text-align:right">右对齐</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="7-待办事宜"><a href="#7-待办事宜" class="headerlink" title="7. 待办事宜"></a>7. 待办事宜</h4><p>- [ ] <strong>个人博客创建</strong><br>    &emsp;- [x] xxx<br>    &emsp;- [x] xxx<br>        &emsp;&emsp;- [ ] xxx <a href="http://www.imooc.com/article/73811" target="_blank" rel="noopener">参考链接</a><br>=&gt;</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> <strong>个人博客创建</strong><ul>
+<li style="list-style: none"><input type="checkbox" checked> 主题选择</li>
+<li style="list-style: none"><input type="checkbox" checked> 背景音乐</li>
+<li style="list-style: none"><input type="checkbox" checked> 站内搜索</li>
+<li style="list-style: none"><input type="checkbox" checked> 日历组件添加</li>
+<li style="list-style: none"><input type="checkbox" checked> 文章评论留言</li>
+<li style="list-style: none"><input type="checkbox" checked> 在线聊天</li>
+<li style="list-style: none"><input type="checkbox" checked> 百度统计</li>
+<li style="list-style: none"><input type="checkbox"> 项目展示</li>
+<li style="list-style: none"><input type="checkbox"> 技术文章</li>
+<li style="list-style: none"><input type="checkbox"> 个人简历</li>
+<li style="list-style: none"><input type="checkbox"> 联系合作</li>
+<li style="list-style: none"><input type="checkbox"> 优化<ul>
+<li style="list-style: none"><input type="checkbox"> SEO <a href="http://www.imooc.com/article/73811" target="_blank" rel="noopener">参考链接</a></li>
+<li style="list-style: none"><input type="checkbox"> 动画效果</li>
+<li style="list-style: none"><input type="checkbox"> 其它…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li style="list-style: none"><input type="checkbox"> <strong>个人网站开发</strong><ul>
+<li style="list-style: none"><input type="checkbox" checked> 了解域名和IP</li>
+<li style="list-style: none"><input type="checkbox"> 了解服务器和数据库</li>
+<li style="list-style: none"><input type="checkbox"> 学习后端语言和数据库语言</li>
+<li style="list-style: none"><input type="checkbox"> 配置服务器和数据库，域名备案解析</li>
+<li style="list-style: none"><input type="checkbox"> 前端构建，页面开发</li>
+<li style="list-style: none"><input type="checkbox"> 网站上线</li>
+</ul>
+</li>
+<li style="list-style: none"><input type="checkbox"> <strong>个人网店创办</strong><ul>
+<li style="list-style: none"><input type="checkbox" checked> 申请网店账号</li>
+<li style="list-style: none"><input type="checkbox"> 了解网店创办流程</li>
+<li style="list-style: none"><input type="checkbox"> 熟悉相关操作和软件</li>
+<li style="list-style: none"><input type="checkbox"> 布置店面</li>
+<li style="list-style: none"><input type="checkbox"> 寻找货源</li>
+<li style="list-style: none"><input type="checkbox"> 安排客服</li>
+<li style="list-style: none"><input type="checkbox"> 模拟交易流程</li>
+<li style="list-style: none"><input type="checkbox"> 货物上架</li>
+<li style="list-style: none"><input type="checkbox"> 网店开张</li>
+</ul>
+</li>
+<li style="list-style: none"><input type="checkbox"> <strong>其它…</strong></li>
+</ul>
+<h4 id="8-代码块"><a href="#8-代码块" class="headerlink" title="8. 代码块"></a>8. 代码块</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = 123  </span><br><span class="line"><span class="built_in">let</span> b = 456  </span><br><span class="line"><span class="built_in">let</span> c = a + b  </span><br><span class="line">console.log(c)</span><br></pre></td></tr></table></figure> -->
+        
+        
+        <h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>&emsp;&emsp;Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。它的语法简单明了、学习容易，而且功能比纯文本更强，因此很多人用它来写博客。<br>世界上最流行的博客平台WordPress和大型CMS如Joomla、Drupal都能很好的支持Markdown。完全采用Markdown编辑器的博客平台有Ghost和Typecho。<br>&emsp;&emsp;用于编写说明文档，并且以“README.md”的文件名保存在软件的目录下面。<br>&emsp;&emsp;除此之外，由于我们有了RStudio这样的神级编辑器，我们还可以快速将Markdown转化为演讲PPT、Word产品文档、LaTex论文甚至是用非常少量的代码完成最小可用原型。在数据科学领域，Markdown已经广泛使用，极大地推进了动态可重复性研究的历史进程。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><h4 id="1-文本样式"><a href="#1-文本样式" class="headerlink" title="1. 文本样式"></a>1. 文本样式</h4><p>斜体：*xxx* 或 _xxx_  =&gt; <em>xxx</em><br>粗体：**xxx**  =&gt;  =&gt; <strong>xx</strong><br>加粗斜体：***xxx***  =&gt;  <strong><em>xxx</em></strong><br>删除线：~~xxx~~  =&gt;  <del>xxx</del><br>加粗斜体删除线：***~~xxx~~***  =&gt;  <strong><em><del>xxx</del></em></strong>  </p>
+<h4 id="2-分级标题"><a href="#2-分级标题" class="headerlink" title="2.分级标题"></a>2.分级标题</h4><p># 一级标题  =&gt; </p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>## 二级标题 =&gt; </p>
+<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>### 三级标题 =&gt;  </p>
+<h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>#### 四级标题 =&gt;   </p>
+<h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><p>##### 五级标题  =&gt;  </p>
+<h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><p>###### 六级标题   =&gt; </p>
+<h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h4 id="3-超链接"><a href="#3-超链接" class="headerlink" title="3. 超链接"></a>3. 超链接</h4><p>行内形式：[content](url “title”)<br>例：<br>[我的博客](<a href="https://ray-dai.github.io/">https://ray-dai.github.io/</a> “点击打开我的博客”)<br>=&gt;<br><a href="https://ray-dai.github.io/" title="点击打开我的博客">我的博客</a>  </p>
+<p>参数形式：[content][name]<br>&emsp;&emsp;&emsp;&emsp;&emsp;[name]: url “title”<br>例：<br>[我的博客][1]<br>有一个很好的平台-[简书][2]<br>[1]:<a href="https://rai-dai.github.io/" target="_blank" rel="noopener">https://rai-dai.github.io/</a><br>[2]:<a href="http://www.jianshu.com/" target="_blank" rel="noopener">http://www.jianshu.com/</a><br>=&gt;<br>[我的博客][1]<br>有一个很好的平台-[简书][2]<br>[1]:<a href="https://rai-dai.github.io/" target="_blank" rel="noopener">https://rai-dai.github.io/</a><br>[2]:<a href="http://www.jianshu.com/" target="_blank" rel="noopener">http://www.jianshu.com/</a> </p>
+<p>自动链接：  &lt; url &gt;<br>例子：<br>我的博客地址 <a href="https://ray-dai.github.io/">https://ray-dai.github.io/</a>  </p>
+<h4 id="4-列表"><a href="#4-列表" class="headerlink" title="4. 列表"></a>4. 列表</h4><p>无序列表：<br>* xxx  =&gt;  •  xxx<br>+ xxx  =&gt;  •  xxx<br>- xxx  =&gt;  •  xxx  </p>
+<p>有序列表：<br>1.xxx  =&gt;  1.xxx<br>2.xxx  =&gt;  2.xxx<br>3.xxx  =&gt;  3.xxx  </p>
+<h4 id="5-插入图片、视频、音乐"><a href="#5-插入图片、视频、音乐" class="headerlink" title="5. 插入图片、视频、音乐"></a>5. 插入图片、视频、音乐</h4><p>插入图片<br>在 Hexo 中插入图片，首先需要将图片放在 source/images/ 文件夹下，然后如下方式进行插入:  <center>![title](src)</center><br>例：<br><img src="/images/kind.jpeg" alt="你是什么垃圾"><br>如果要设置图片尺寸或居左/中/右，可以如下设置：<br>&lt; img src=”/images/kind.jpeg” width = “100” height = “100” div align=center /&gt;<br>效果如下：<br><img src="/images/kind.jpeg" width="100" height="100" div="" align="center">  </p>
+<p>插入视频<br>&lt; video src=”/media/demo.mp4” width=”320” height=”180” controls=”controls”&gt;&lt; /video&gt;<br>效果如下：</p>
+<video src="/media/demo.mp4" width="320" height="180" controls="controls"></video>
+
+<p>插入音频<br>&lt; audio src=”/media/穿越时空的思念.mp3” controls autoplay&gt;<br>&emsp;&emsp;您的浏览器暂时不支持音频<br>&lt; /audio&gt;<br>效果如下：  </p>
+<audio src="/media/穿越时空的思念.mp3" controls autoplay><br> 您的浏览器暂时不支持音频<br></audio>  
+
+
+        <div id="aplayer-AlwhSUdm" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+            <pre class="aplayer-lrc-content"></pre>
+        </div>
+        <script>
+          var ap = new APlayer({
+            element: document.getElementById("aplayer-AlwhSUdm"),
+            narrow: false,
+            autoplay: true,
+            showlrc: false,
+            music: {
+              title: "穿越时空的思念",
+              author: "和田薰",
+              url: "/media/穿越时空的思念.mp3",
+              pic: "/images/kind.jpeg",
+              lrc: ""
+            }
+          });
+          window.aplayers || (window.aplayers = []);
+          window.aplayers.push(ap);
+        </script>
+<h4 id="6-表格"><a href="#6-表格" class="headerlink" title="6. 表格"></a>6. 表格</h4><p>表头1|表头2|表头3|表头4<br>-| :- | :-: | -:<br>默认左对齐|左对齐|居中对其|右对齐|<br>默认左对齐|左对齐|居中对其|右对齐|<br>默认左对齐|左对齐|居中对其|右对齐|</p>
+<p>=&gt;</p>
+<table>
+<thead>
+<tr>
+<th>表头1</th>
+<th style="text-align:left">表头2</th>
+<th style="text-align:center">表头3</th>
+<th style="text-align:right">表头4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认左对齐</td>
+<td style="text-align:left">左对齐</td>
+<td style="text-align:center">居中对其</td>
+<td style="text-align:right">右对齐</td>
+<td></td>
+</tr>
+<tr>
+<td>默认左对齐</td>
+<td style="text-align:left">左对齐</td>
+<td style="text-align:center">居中对其</td>
+<td style="text-align:right">右对齐</td>
+<td></td>
+</tr>
+<tr>
+<td>默认左对齐</td>
+<td style="text-align:left">左对齐</td>
+<td style="text-align:center">居中对其</td>
+<td style="text-align:right">右对齐</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="7-待办事宜"><a href="#7-待办事宜" class="headerlink" title="7. 待办事宜"></a>7. 待办事宜</h4><p>- [ ] <strong>个人博客创建</strong><br>    &emsp;- [x] xxx<br>    &emsp;- [x] xxx<br>        &emsp;&emsp;- [ ] xxx <a href="http://www.imooc.com/article/73811" target="_blank" rel="noopener">参考链接</a><br>=&gt;</p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> <strong>个人博客创建</strong><ul>
+<li style="list-style: none"><input type="checkbox" checked> 主题选择</li>
+<li style="list-style: none"><input type="checkbox" checked> 背景音乐</li>
+<li style="list-style: none"><input type="checkbox" checked> 站内搜索</li>
+<li style="list-style: none"><input type="checkbox" checked> 日历组件添加</li>
+<li style="list-style: none"><input type="checkbox" checked> 文章评论留言</li>
+<li style="list-style: none"><input type="checkbox" checked> 在线聊天</li>
+<li style="list-style: none"><input type="checkbox" checked> 百度统计</li>
+<li style="list-style: none"><input type="checkbox"> 项目展示</li>
+<li style="list-style: none"><input type="checkbox"> 技术文章</li>
+<li style="list-style: none"><input type="checkbox"> 个人简历</li>
+<li style="list-style: none"><input type="checkbox"> 联系合作</li>
+<li style="list-style: none"><input type="checkbox"> 优化<ul>
+<li style="list-style: none"><input type="checkbox"> SEO <a href="http://www.imooc.com/article/73811" target="_blank" rel="noopener">参考链接</a></li>
+<li style="list-style: none"><input type="checkbox"> 动画效果</li>
+<li style="list-style: none"><input type="checkbox"> 其它…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li style="list-style: none"><input type="checkbox"> <strong>个人网站开发</strong><ul>
+<li style="list-style: none"><input type="checkbox" checked> 了解域名和IP</li>
+<li style="list-style: none"><input type="checkbox"> 了解服务器和数据库</li>
+<li style="list-style: none"><input type="checkbox"> 学习后端语言和数据库语言</li>
+<li style="list-style: none"><input type="checkbox"> 配置服务器和数据库，域名备案解析</li>
+<li style="list-style: none"><input type="checkbox"> 前端构建，页面开发</li>
+<li style="list-style: none"><input type="checkbox"> 网站上线</li>
+</ul>
+</li>
+<li style="list-style: none"><input type="checkbox"> <strong>个人网店创办</strong><ul>
+<li style="list-style: none"><input type="checkbox" checked> 申请网店账号</li>
+<li style="list-style: none"><input type="checkbox"> 了解网店创办流程</li>
+<li style="list-style: none"><input type="checkbox"> 熟悉相关操作和软件</li>
+<li style="list-style: none"><input type="checkbox"> 布置店面</li>
+<li style="list-style: none"><input type="checkbox"> 寻找货源</li>
+<li style="list-style: none"><input type="checkbox"> 安排客服</li>
+<li style="list-style: none"><input type="checkbox"> 模拟交易流程</li>
+<li style="list-style: none"><input type="checkbox"> 货物上架</li>
+<li style="list-style: none"><input type="checkbox"> 网店开张</li>
+</ul>
+</li>
+<li style="list-style: none"><input type="checkbox"> <strong>其它…</strong></li>
+</ul>
+<h4 id="8-代码块"><a href="#8-代码块" class="headerlink" title="8. 代码块"></a>8. 代码块</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> a = 123  </span><br><span class="line"><span class="built_in">let</span> b = 456  </span><br><span class="line"><span class="built_in">let</span> c = a + b  </span><br><span class="line">console.log(c)</span><br></pre></td></tr></table></figure>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ray-dai.github.io/2019/07/15/文章1/" data-id="cjydusw1f0004bcpqn8srtb3w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第一篇，练习，熟悉markdown/">第一篇，练习，熟悉markdown</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/17/博客现有功能及后续功能设计/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          博客现有功能及后续功能设计
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80NTM4MS8yMTg5Mw==">
+    <script type="text/javascript">
+        (function (d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+    
+    
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/commons/">commons</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/第一篇，练习，熟悉markdown/">第一篇，练习，熟悉markdown</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget tag">
+    <h3 class="title">日历云</h3>
+    <div id="calendar"></div>
+</div>
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Ray<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/projects" class="mobile-nav-link">项目</a>
+  
+    <a href="/stacks" class="mobile-nav-link">技术</a>
+  
+    <a href="/resume" class="mobile-nav-link">关于我</a>
+  
+    <a href="/contact" class="mobile-nav-link">联系我</a>
+  
+</nav>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/local_search.js"></script>
+
+<!-- add calendar widget -->
+
+<script src="/js/calendar.js"></script>
+<script src="/js/languages.js"></script>
+<script type="text/javascript">
+    $(function () {
+      
+            $('#calendar').aCalendar('zh-CN', { single:true, root: 'calendar/' });
+      
+      });
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
