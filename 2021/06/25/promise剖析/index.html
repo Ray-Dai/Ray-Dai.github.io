@@ -20,18 +20,20 @@
     
     <title>promise剖析 | Ray&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="一、定义 promise是js异步的一种解决方案  js为什么要实现异步 解决方案是怎样的 还有什么解决方案，它们的区别 自己实现一种方案">
+    <meta name="description" content="一、定义promise是js异步的一种解决方案 1. js为什么要实现异步js代码首先是单线程执行，即同步执行，正常来讲是在一个线程上有一个执行栈，全局/函数/eval执行上下文根据调用依次压入栈中，执行完后从栈中弹出，先进后出。如果碰到I/O任务，响应会比较慢，这样就会导致以下的问题：  造成网页卡死，因为js引擎线程和GUI渲染线程是互斥的，js任务队列没有执行完毕，GUI渲染线程一直被挂起">
 <meta name="keywords" content="JavaScript, HTML, CSS, Node.js, React, Vue.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="promise剖析">
 <meta property="og:url" content="http://ray-dai.github.io/2021/06/25/promise剖析/index.html">
 <meta property="og:site_name" content="Ray&#39;s Blog">
-<meta property="og:description" content="一、定义 promise是js异步的一种解决方案  js为什么要实现异步 解决方案是怎样的 还有什么解决方案，它们的区别 自己实现一种方案">
+<meta property="og:description" content="一、定义promise是js异步的一种解决方案 1. js为什么要实现异步js代码首先是单线程执行，即同步执行，正常来讲是在一个线程上有一个执行栈，全局/函数/eval执行上下文根据调用依次压入栈中，执行完后从栈中弹出，先进后出。如果碰到I/O任务，响应会比较慢，这样就会导致以下的问题：  造成网页卡死，因为js引擎线程和GUI渲染线程是互斥的，js任务队列没有执行完毕，GUI渲染线程一直被挂起">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-06-25T15:11:25.695Z">
+<meta property="og:image" content="http://ray-dai.github.io/images/event-loop.png">
+<meta property="og:updated_time" content="2021-06-27T15:39:20.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="promise剖析">
-<meta name="twitter:description" content="一、定义 promise是js异步的一种解决方案  js为什么要实现异步 解决方案是怎样的 还有什么解决方案，它们的区别 自己实现一种方案">
+<meta name="twitter:description" content="一、定义promise是js异步的一种解决方案 1. js为什么要实现异步js代码首先是单线程执行，即同步执行，正常来讲是在一个线程上有一个执行栈，全局/函数/eval执行上下文根据调用依次压入栈中，执行完后从栈中弹出，先进后出。如果碰到I/O任务，响应会比较慢，这样就会导致以下的问题：  造成网页卡死，因为js引擎线程和GUI渲染线程是互斥的，js任务队列没有执行完毕，GUI渲染线程一直被挂起">
+<meta name="twitter:image" content="http://ray-dai.github.io/images/event-loop.png">
     
     <link rel="alternate" href="/atom.xml" title="Ray&#39;s Blog" type="application/atom+xml">
     
@@ -130,33 +132,53 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- <h1 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h1><blockquote>
-<p>promise是js异步的一种解决方案</p>
+        <!-- <h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>promise是js异步的一种解决方案</p>
+<h3 id="1-js为什么要实现异步"><a href="#1-js为什么要实现异步" class="headerlink" title="1. js为什么要实现异步"></a>1. js为什么要实现异步</h3><p>js代码首先是单线程执行，即同步执行，正常来讲是在一个线程上有一个执行栈，全局/函数/eval执行上下文根据调用依次压入栈中，执行完后从栈中弹出，先进后出。如果碰到I/O任务，响应会比较慢，这样就会导致以下的问题：</p>
 <ul>
-<li>js为什么要实现异步</li>
-<li>解决方案是怎样的</li>
-<li>还有什么解决方案，它们的区别</li>
-<li>自己实现一种方案</li>
+<li>造成网页卡死，因为js引擎线程和GUI渲染线程是互斥的，js任务队列没有执行完毕，GUI渲染线程一直被挂起</li>
+<li>这时候CPU往往是闲着的，浪费了资源<br>那么为了解决上述问题，就需要js实现异步来解决阻塞问题，将一些需要等待响应的任务作为异步任务，放入任务队列，等待执行栈中的当前任务执行完后，将任务队列推入主线程，依次执行任务队列中的任务。</li>
 </ul>
-</blockquote>
+<h3 id="2-解决方案是怎样的"><a href="#2-解决方案是怎样的" class="headerlink" title="2. 解决方案是怎样的"></a>2. 解决方案是怎样的</h3><h3 id="3-还有什么解决方案，它们的区别"><a href="#3-还有什么解决方案，它们的区别" class="headerlink" title="3. 还有什么解决方案，它们的区别"></a>3. 还有什么解决方案，它们的区别</h3><h3 id="4-自己实现一种方案"><a href="#4-自己实现一种方案" class="headerlink" title="4. 自己实现一种方案"></a>4. 自己实现一种方案</h3><h4 id="什么是单线程语言？"><a href="#什么是单线程语言？" class="headerlink" title="什么是单线程语言？"></a>什么是单线程语言？</h4><h5 id="浏览器架构"><a href="#浏览器架构" class="headerlink" title="浏览器架构"></a>浏览器架构</h5><p>浏览器是多进程架构，一个tab网页即一个进程，各个tag网页间互不干扰，完全独立。每打开一个tab网页，浏览器就会为该网页分配独立的渲染引擎实例。</p>
+<h5 id="渲染引擎（浏览器内核）"><a href="#渲染引擎（浏览器内核）" class="headerlink" title="渲染引擎（浏览器内核）"></a>渲染引擎（浏览器内核）</h5><p>渲染引擎即浏览器内核是多线程的，在内核的控制下各线程相互配合以保持同步，这些线程主要包括：</p>
+<ul>
+<li><strong>GUI渲染线程</strong><br>  负责渲染HTML元素，当页面需要重绘repaint/回流reflow时，该线程就会执行。</li>
+<li><strong>JavaScript引擎线程</strong><br>  负责解析js脚本，运行代码，我们常说的V8引擎就是一个js引擎。</li>
+<li><strong>定时触发器线程</strong><br>  setTimeout、setInterval等待时间结束后把执行函数堆入任务队列中</li>
+<li><strong>事件触发线程</strong><br>  将click、mouse等交互事件发生后将这些事件放入事件队列中</li>
+<li><strong>异步http请求线程</strong><br>  处理用户的get、post等请求，等返回结果后将回调函数堆入任务队列</li>
+</ul>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>从以上内容可以看出，js代码是被一个js引擎线程来解析执行，即单线程执行，所以说js是单线程语言</p>
+<h4 id="为什么是单线程语言"><a href="#为什么是单线程语言" class="headerlink" title="为什么是单线程语言"></a>为什么是单线程语言</h4><p>这主要是因为js脚本的作用是处理用户的交互，操作dom，如果做成来多线程的话，一旦dom操作达到临界资源，开启了一个新的线程来执行，而两个线程分别是修改和删除同一个dom，就会出现问题（该问题可以通过锁来解决，但是可能会造成其他的问题，大大增加复杂性）。</p>
+<h4 id="如何实现多线程"><a href="#如何实现多线程" class="headerlink" title="如何实现多线程"></a>如何实现多线程</h4><p>为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线程的本质。</p>
+<h4 id="GUI渲染线程和JS引擎线程是互斥的"><a href="#GUI渲染线程和JS引擎线程是互斥的" class="headerlink" title="GUI渲染线程和JS引擎线程是互斥的"></a>GUI渲染线程和JS引擎线程是互斥的</h4><p><img src="/images/event-loop.png" alt="JavaScript事件循环机制"></p>
  -->
         
         
-        <h1 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h1><blockquote>
-<p>promise是js异步的一种解决方案</p>
+        <h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>promise是js异步的一种解决方案</p>
+<h3 id="1-js为什么要实现异步"><a href="#1-js为什么要实现异步" class="headerlink" title="1. js为什么要实现异步"></a>1. js为什么要实现异步</h3><p>js代码首先是单线程执行，即同步执行，正常来讲是在一个线程上有一个执行栈，全局/函数/eval执行上下文根据调用依次压入栈中，执行完后从栈中弹出，先进后出。如果碰到I/O任务，响应会比较慢，这样就会导致以下的问题：</p>
 <ul>
-<li>js为什么要实现异步</li>
-<li>解决方案是怎样的</li>
-<li>还有什么解决方案，它们的区别</li>
-<li>自己实现一种方案</li>
+<li>造成网页卡死，因为js引擎线程和GUI渲染线程是互斥的，js任务队列没有执行完毕，GUI渲染线程一直被挂起</li>
+<li>这时候CPU往往是闲着的，浪费了资源<br>那么为了解决上述问题，就需要js实现异步来解决阻塞问题，将一些需要等待响应的任务作为异步任务，放入任务队列，等待执行栈中的当前任务执行完后，将任务队列推入主线程，依次执行任务队列中的任务。</li>
 </ul>
-</blockquote>
+<h3 id="2-解决方案是怎样的"><a href="#2-解决方案是怎样的" class="headerlink" title="2. 解决方案是怎样的"></a>2. 解决方案是怎样的</h3><h3 id="3-还有什么解决方案，它们的区别"><a href="#3-还有什么解决方案，它们的区别" class="headerlink" title="3. 还有什么解决方案，它们的区别"></a>3. 还有什么解决方案，它们的区别</h3><h3 id="4-自己实现一种方案"><a href="#4-自己实现一种方案" class="headerlink" title="4. 自己实现一种方案"></a>4. 自己实现一种方案</h3><h4 id="什么是单线程语言？"><a href="#什么是单线程语言？" class="headerlink" title="什么是单线程语言？"></a>什么是单线程语言？</h4><h5 id="浏览器架构"><a href="#浏览器架构" class="headerlink" title="浏览器架构"></a>浏览器架构</h5><p>浏览器是多进程架构，一个tab网页即一个进程，各个tag网页间互不干扰，完全独立。每打开一个tab网页，浏览器就会为该网页分配独立的渲染引擎实例。</p>
+<h5 id="渲染引擎（浏览器内核）"><a href="#渲染引擎（浏览器内核）" class="headerlink" title="渲染引擎（浏览器内核）"></a>渲染引擎（浏览器内核）</h5><p>渲染引擎即浏览器内核是多线程的，在内核的控制下各线程相互配合以保持同步，这些线程主要包括：</p>
+<ul>
+<li><strong>GUI渲染线程</strong><br>  负责渲染HTML元素，当页面需要重绘repaint/回流reflow时，该线程就会执行。</li>
+<li><strong>JavaScript引擎线程</strong><br>  负责解析js脚本，运行代码，我们常说的V8引擎就是一个js引擎。</li>
+<li><strong>定时触发器线程</strong><br>  setTimeout、setInterval等待时间结束后把执行函数堆入任务队列中</li>
+<li><strong>事件触发线程</strong><br>  将click、mouse等交互事件发生后将这些事件放入事件队列中</li>
+<li><strong>异步http请求线程</strong><br>  处理用户的get、post等请求，等返回结果后将回调函数堆入任务队列</li>
+</ul>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>从以上内容可以看出，js代码是被一个js引擎线程来解析执行，即单线程执行，所以说js是单线程语言</p>
+<h4 id="为什么是单线程语言"><a href="#为什么是单线程语言" class="headerlink" title="为什么是单线程语言"></a>为什么是单线程语言</h4><p>这主要是因为js脚本的作用是处理用户的交互，操作dom，如果做成来多线程的话，一旦dom操作达到临界资源，开启了一个新的线程来执行，而两个线程分别是修改和删除同一个dom，就会出现问题（该问题可以通过锁来解决，但是可能会造成其他的问题，大大增加复杂性）。</p>
+<h4 id="如何实现多线程"><a href="#如何实现多线程" class="headerlink" title="如何实现多线程"></a>如何实现多线程</h4><p>为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。所以，这个新标准并没有改变JavaScript单线程的本质。</p>
+<h4 id="GUI渲染线程和JS引擎线程是互斥的"><a href="#GUI渲染线程和JS引擎线程是互斥的" class="headerlink" title="GUI渲染线程和JS引擎线程是互斥的"></a>GUI渲染线程和JS引擎线程是互斥的</h4><p><img src="/images/event-loop.png" alt="JavaScript事件循环机制"></p>
 
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ray-dai.github.io/2021/06/25/promise剖析/" data-id="ckqd2zkau0002yv1tijj2h14s" class="article-share-link">Share</a>
+      <a data-url="http://ray-dai.github.io/2021/06/25/promise剖析/" data-id="ckqfcyre50006bh1t0kd01ebs" class="article-share-link">Share</a>
       
       
     </footer>
